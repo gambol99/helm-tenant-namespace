@@ -1,0 +1,51 @@
+# Default values for tenant-namespace.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+roleBinding:
+  create: true
+  roleName: cluster-admin
+
+limitsRange:
+  cpu:
+    min: 100m
+    max: 1000m
+  memory:
+    min: 128Mi
+    max: 1024Mi
+  storage:
+    min: 1Gi
+    max: 10Gi
+  ports:
+    min: 1024
+    max: 65535
+
+resourceQuotas:
+  hard:
+    maxCpu: 1000m
+    maxMemory: 1024Mi
+    maxStorage: 10Gi
+    maxPorts: 10
+  soft:
+    minCpu: 100m
+    minMemory: 128Mi
+    minStorage: 1Gi
+    minPorts: 1
+
+# This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""

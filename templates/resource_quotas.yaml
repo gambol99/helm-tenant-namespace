@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.name }}
+  labels:
+    {{ include "tenant-namespace.labels" . }}
+  annotations:
+    {{ include "tenant-namespace.annotations" . }}
+spec:
+  hard:
+    cpu: {{ .Values.limits.hard.maxCpu }}
+    memory: {{ .Values.limits.hard.maxMemory }}
+    requests.cpu: {{ .Values.limits.hard.maxCpu }}
+    requests.memory: {{ .Values.limits.hard.maxMemory }}
+    requests.storage: {{ .Values.limits.hard.maxStorage }}
+    services.loadbalancer.ingress.ip: {{ .Values.limits.hard.maxPorts }}
+  soft:
+    cpu: {{ .Values.limits.soft.minCpu }}
+    memory: {{ .Values.limits.soft.minMemory }}
+    requests.cpu: {{ .Values.limits.soft.minCpu }}
+    requests.memory: {{ .Values.limits.soft.minMemory }}
+    requests.storage: {{ .Values.limits.soft.minStorage }}
+    services.loadbalancer.ingress.ip: {{ .Values.limits.soft.minPorts }}
+
