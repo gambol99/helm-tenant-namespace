@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  tenant-namespace:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2025-02-19T17:00:35.006565252Z"
+    description: Used to provision a secure namespace for tenant workloads.
+    digest: 71edade52ee46f75ed1a9b4fe177872f355ae77413b1ac85b58700651826c5ab
+    name: tenant-namespace
+    type: application
+    urls:
+    - https://github.com/gambol99/helm-tenant-namespace/releases/download/tenant-namespace-0.1.1/tenant-namespace-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-02-19T17:00:35.006576032Z"
