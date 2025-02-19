@@ -1,13 +1,8 @@
 apiVersion: v1
-kind: NetworkPolicy
+kind: Namespace
 metadata:
-  name: default-deny
+  name: "{{ .Values.namespace }}"
   labels: 
 {{ include "tenant-namespace.labels" . | indent 4 }}
   annotations:  
 {{ include "tenant-namespace.annotations" . | indent 4 }}
-spec:
-  podSelector: {}
-  policyTypes:
-    - Ingress
-

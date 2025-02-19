@@ -2,18 +2,18 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ .Values.name }}
-  labels:
-    {{- include "tenant-namespace.labels" . | nindent 4 }}
-  annotations:
-    {{- include "tenant-namespace.annotations" . | nindent 4 }}
+  name: namespace-admin
+  labels: 
+{{ include "tenant-namespace.labels" . | indent 4 }}
+  annotations:  
+{{ include "tenant-namespace.annotations" . | indent 4 }}
 spec:
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
-    name: {{ .Values.roleBinding.roleName }}
+    name: "{{ .Values.roleBinding.roleName }}"
   subjects:
     - kind: ServiceAccount
-      name: {{ include "tenant-namespace.serviceAccountName" . }}
-      namespace: {{ .Values.name }}
+      name: "{{ include "tenant-namespace.serviceAccountName" . }}"
+      namespace: "{{ .Values.namespace }}"
 {{- end }}

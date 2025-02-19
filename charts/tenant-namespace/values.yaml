@@ -1,6 +1,8 @@
 nameOverride: ""
 fullnameOverride: ""
 
+namespace: ""
+
 roleBinding:
   create: true
   roleName: cluster-admin
@@ -19,7 +21,7 @@ limitsRange:
     min: 1024
     max: 65535
 
-resourceQuotas:
+limits:
   hard:
     maxCpu: 1000m
     maxMemory: 1024Mi

@@ -39,7 +39,15 @@ helm.sh/chart: {{ include "tenant-namespace.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Common Annotations
+*/}}
+{{- define "tenant-namespace.annotations" -}}
+{{- if .Values.annotations }}
+{{ toYaml .Values.annotations | nindent 4 }}
+{{- end }}
 {{- end }}
 
 {{/*
